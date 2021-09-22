@@ -5,11 +5,11 @@ S = 1000000
 I = 100
 R = 0
 N = S + I + R
-m = 20
+m = 3
 p = 0.02
 
 beta = m * p / N
-gamma = 1.0 / 14 
+gamma = 1.0 / 14
 
 S_arr = []
 I_arr = []
@@ -31,8 +31,12 @@ while cnt < 300:
     R_arr.append(R)
     cnt = cnt + 1
     
-plt.plot(range(cnt), S_arr)
-plt.plot(range(cnt), I_arr)
-plt.plot(range(cnt), R_arr)
-
+print(beta*N/gamma)
+plt.title("SIR model simulation. m = {}. R0={:.2f}".format(m, beta*N/gamma))
+plt.plot(range(cnt), S_arr, label="uninfected")
+plt.plot(range(cnt), I_arr, label="infected")
+plt.plot(range(cnt), R_arr, label="recovered")
+plt.xlabel("day")
+plt.ylabel("population")
+plt.legend()
 plt.show()
